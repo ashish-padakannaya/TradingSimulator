@@ -6,8 +6,13 @@ import QSTK.qstkutil.tsutil as tsu
 import QSTK.qstkutil.DataAccess as da
 import datetime as dt
 import sys
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-from pylab import *
+# from matplotlib import pylab
+# from matplotlib.dates import DateFormatter
+import matplotlib.dates as mdates
+from pylab import figure
 
 
 def marketsim(investment, orders_file, out_file):
@@ -81,7 +86,7 @@ def marketsim(investment, orders_file, out_file):
     ax.set_xticklabels(data.index, rotation=45)
     ax.yaxis.grid(color='gray', linestyle='dashed')
     ax.xaxis.grid(color='gray', linestyle='dashed')
-    ax.xaxis.set_major_formatter(DateFormatter('%b %Y'))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
     ax.legend(('Fund','Market'), loc='upper left')
     ax.set_title('Fund Performance VS Market (SPY)', 
                     fontsize=16, fontweight="bold")
